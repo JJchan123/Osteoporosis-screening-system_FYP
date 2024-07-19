@@ -1,0 +1,33 @@
+WITH 
+RIGHT_HIP_MEASURE AS
+(
+SELECT "Patient ID" , ('{"RightHIP":{"Neck BMD":'|| "Neck BMD"  ||', "Ward BMD": '||"Wards BMD"  ||', "Torch BMD": ' ||"Troch BMD"  
+       ||', "Shaft BMD": '||"Shaft BMD"  ||', "Shaft BMD": '||"Shaft BMD"  ||', "Total BMD": '||"Total BMD" ||'}') AS RHM
+FROM   DEXA_2022
+WHERE SIDE = 'Right'
+),
+LEFT_HIP_MEASURE AS
+(
+SELECT "Patient ID" , ('{"LeftHIP":{"Neck BMD":'|| "Neck BMD"  ||', "Ward BMD": '||"Wards BMD"  ||', "Torch BMD": ' ||"Troch BMD"  
+       ||', "Shaft BMD": '||"Shaft BMD"  ||', "Shaft BMD": '||"Shaft BMD"  ||', "Total BMD": '||"Total BMD" ||'}') AS LHM
+FROM   DEXA_2022
+WHERE SIDE = 'Left'
+)
+
+SELECT a.SOP_INSTANCE_UID, a."Path", a.PATIENT_ID, a.PATIENT_AGE, b.GENDER,
+       b.ETHNICITY AS RACE, (a.PATIENT_ID || '_' || TO_DATE(b."Most Recent Measurement Date", 'YYYY/MM/DD HH24:MI')) AS DXA_UID,
+       (d.RHM ||' '|| c.LHM) AS DEXA_MEASURE, TO_DATE(a.STUDY_DATE, 'YYYY/MM/DD HH24:MI') AS XRAY_DATE,
+       TO_DATE(b."Most Recent Measurement Date", 'YYYY/MM/DD HH24:MI') AS DXA_DATE,
+       ROUND(MONTHS_BETWEEN(TO_DATE(a.STUDY_DATE, 'YYYY/MM/DD HH24:MI'), TO_DATE(b."Most Recent Measurement Date", 'YYYY/MM/DD HH24:MI')), 2) AS month_diff,
+       a.BODY_PART_EXAMINED  , b."Neck T-Score"
+FROM XRAY_PELVIS a
+INNER JOIN DEXA_2022 b 
+ON a.PATIENT_ID = b."Patient ID"
+INNER JOIN LEFT_HIP_MEASURE c 
+ON b."Patient ID" = c."Patient ID"
+INNER JOIN RIGHT_HIP_MEASURE d 
+ON b."Patient ID" = d."Patient ID"
+WHERE ROUND(MONTHS_BETWEEN(TO_DATE(a.STUDY_DATE, 'YYYY/MM/DD HH24:MI'), TO_DATE(b."Most Recent Measurement Date", 'YYYY/MM/DD HH24:MI')), 2) <= 6
+      AND ROUND(MONTHS_BETWEEN(TO_DATE(a.STUDY_DATE, 'YYYY/MM/DD HH24:MI'), TO_DATE(b."Most Recent Measurement Date", 'YYYY/MM/DD HH24:MI')), 2) >= -6
+ORDER BY a.STUDY_DATE DESC;
+
