@@ -1,0 +1,15 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Please upload your image</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Here to upload the image</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

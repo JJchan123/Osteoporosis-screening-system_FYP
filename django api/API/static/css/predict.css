@@ -1,0 +1,97 @@
+/* predict.css */
+body {
+    background-image: url('AdobeStock1.jpeg'); /* 设置背景图片的路径 */
+    /*background-size: cover; /* 缩放背景图片以覆盖整个页面 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+	/*background-position: 20% 50%;*/
+}
+
+h2 {
+    font-size: 30px;
+    color: #dff8f0;
+    margin: 0 auto; /* 水平居中 */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 20vh; /* 设置高度为视口的100%，实现垂直居中 */
+}
+
+h1 {
+    font-size: 27px;
+    color: #dff8f0;
+    margin: 0 auto; /* 水平居中 */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+p {
+    font-size: 23px;
+    color: #dff8f0;
+    margin: 0 auto; /* 水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直居中 */
+}
+
+p1 {
+    font-size: 20px;
+    height: 15px; /* 设置高度为50像素 */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+h3 {
+    font-size: 20px;
+    color: #dff8f0;
+}
+
+a {
+    color: #3ae4ea;
+}
+
+.image-container {
+    position: absolute;
+    bottom: 40;
+    right: 25;
+}
+.image-container1 {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p3 {
+    font-size: 23px;
+    color: #dff8f0;
+    margin: 0 auto; /* 水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直居中 */
+}
+
+.gradcam {
+    position: absolute;
+    bottom: 140;
+    left: 200;
+}
+
+p5 {
+    font-size: 15px;
+    color: #fdfdfd;
+    position: absolute;
+    bottom: 5;
+    right: 5;
+}
+
+p4 {
+    font-size: 20px;
+    color: #3ae4ea;
+    position: absolute;
+    top: 5px; 
+    right: 5px; 
+}
+
+

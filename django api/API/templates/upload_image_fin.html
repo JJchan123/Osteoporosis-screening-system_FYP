@@ -1,0 +1,44 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload & Image Preview</title>
+    <!-- 添加必要的CSS和FontAwesome庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<link rel="stylesheet" href="{% static 'css/upload_css.css' %}">
+
+</head>
+<body>
+    <h2>歡迎使用骨質疏鬆檢測系統</h2>
+    <a href="{% static 'css/sys.pdf' %}" target="_blank"><p> <strong>使用者手冊</strong></p></a>
+
+    <!-- Upload  -->
+    <form id="file-upload-form" class="uploader" method="post" enctype="multipart/form-data" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <input id="file-upload" type="file" name="image" accept="image/*" />
+
+        <label for="file-upload" id="file-drag">
+            <img id="file-image" src="#" alt="Preview" class="hidden">
+            <div id="start">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <div>選擇一個檔案或拖曳到此處</div>
+                <div id="notimage" class="hidden">Please select an image</div>
+                <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+            </div>
+            <div id="response" class="hidden">
+                <div id="messages"></div>
+                <progress class="progress" id="file-progress" value="0">
+                    <span>0</span>%
+                </progress>
+            </div>
+        </label>
+	<button type="submit">上傳</button>
+    </form>
+
+    <!-- 添加JavaScript -->
+    <script src="{% static 'javascript/upload_js.js' %}"></script>
+</body>
+</html>
+

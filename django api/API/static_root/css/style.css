@@ -1,0 +1,23 @@
+html {
+  background-color: #4889a6;
+  font-size: 20px;
+}
+ul {
+  background: rgb(115, 179, 204);
+  padding: 10px;
+  border: 1px solid black;
+}
+li {
+  margin-left: 20px;
+}
+kk {
+    background-color: #111111;
+  font-size: 20px;
+
+}
+body {
+  background-image: url('bone.jpg'); /* 设置背景图片的路径 */
+  background-size: cover; /* 缩放背景图片以覆盖整个页面 */
+  background-repeat: no-repeat; /* 防止背景图片重复 */
+background-position: 20% 50%;
+}

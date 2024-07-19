@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+<head>
+    <title>Prediction Page</title>
+    <link rel="stylesheet" href="{% static 'css/predict.css' %}" />
+</head>
+<body>
+    <h1>預測結果：</h1>
+    <div class="result">
+        <h2>{{prediction|safe }}</h2>
+    </div>
+
+    <p1><a href="https://www.vghtc.gov.tw/UnitPage/UnitContentView?WebMenuID=bd99326d-cc84-4416-b14f-e830700b7b43&UnitID=a36eccff-6bd4-424e-8837-2831220a848d&UnitDefaultTemplate=1"  
+        target="_blank"> 點擊進行預約 </a></p1>
+
+    <div class="gradcam">
+    {% if show_image %}
+    <p> 偵測到骨鬆的位置:</p>
+    <img src="data:image/png;base64,{{ gradcam_base64|safe }}" width="300" height="300" alt="GradCAM Image">
+    </div>
+
+    <div class="image-container">
+        <p3>了解自己是否骨質疏鬆的高危一族?</p3>
+        <img src="{% static 'css/self.png' %}" width="800" height="400" alt="Image">
+    </div>
+    {% endif %}
+    </div>
+
+    {% if noshow_image %}
+    <div class="image-container1">
+        <p3>了解自己是否骨質疏鬆的高危一族?</p3>
+        <img src="{% static 'css/self.png' %}" width="800" height="400" alt="Image">
+    </div>
+    {% endif %}
+
+    <p5> 圖片引用自：<a href="https://www.yehclinic.com/osteoporosis-screening/"  
+        target="_blank"> 葉峻榳醫師診療室</a></p5>
+    
+    <p4><a href="http://127.0.0.1:8000/"> 回到首頁 </a></p4>
+
+</body>
+</html>
+
