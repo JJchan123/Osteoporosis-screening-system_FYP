@@ -47,7 +47,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9 ,weight_decay=0
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=15, gamma=0.1) 
 
 # Load the pre-trained weight
-model.load_state_dict(torch.load("/Users/USER/OneDrive/桌面/MY_FYP/osteoporosis_detector/PTH檔/resnet18_best.pth"))
+model.load_state_dict(torch.load("/Users/USER/OneDrive/桌面/MY_FYP/osteoporosis_detector/PTH_files/resnet18_best.pth"))
 model = model.to(device)
 model.eval()
 target_layers = [model.layer4[-1]]
