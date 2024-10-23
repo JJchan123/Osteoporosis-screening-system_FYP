@@ -29,7 +29,9 @@ In clinical settings, the diagnosis and monitoring of osteoporosis are currently
 
 ### Result
 ![alt text](image.png)
+
 #### This is the home page; users can upload the femur X-ray to get the result.
 ![alt text](image-2.png)
+
 #### This is the result if you were diagnosed with osteoporosis, also with a heat map in which position you have been detected with osteoporosis.
 ![alt text](image-3.png)
